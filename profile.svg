@@ -1,14 +1,26 @@
 <svg fill="none" viewBox="0 0 1200 400" width="1200" height="400" xmlns="http://www.w3.org/2000/svg">
   <defs>
+    <!-- Background Gradient -->
     <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#13141f" />
       <stop offset="50%" stop-color="#16161e" />
       <stop offset="100%" stop-color="#1a1b26" />
     </linearGradient>
+
+    <!-- Name Highlight Text Gradient -->
+    <linearGradient id="text-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7aa2f7" />
+      <stop offset="100%" stop-color="#7dcfff" />
+    </linearGradient>
+
+    <!-- Typing Mask ClipPath -->
+    <clipPath id="type-clip">
+      <rect id="clip-rect" x="80" y="190" width="0" height="40" />
+    </clipPath>
   </defs>
 
   <style>
-    /* CSS Keyframe Animations */
+    /* CSS Animations */
     @keyframes twinkle {
       0%, 100% { opacity: 0.2; }
       50% { opacity: 1; }
@@ -21,17 +33,21 @@
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-6px); }
     }
-    @keyframes typing-effect {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes blink-caret {
-      from, to { border-color: transparent; }
-      50% { border-color: #7aa2f7; }
-    }
     @keyframes glow-pulse {
       0%, 100% { filter: drop-shadow(0 0 4px #7aa2f7); }
       50% { filter: drop-shadow(0 0 12px #7aa2f7); }
+    }
+    @keyframes type-reveal {
+      0%, 10% { width: 0; }
+      90%, 100% { width: 440px; }
+    }
+    @keyframes cursor-move {
+      0%, 10% { transform: translateX(0px); }
+      90%, 100% { transform: translateX(440px); }
+    }
+    @keyframes cursor-blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
     }
 
     /* Twinkling Stars */
@@ -40,65 +56,42 @@
       animation: twinkle 3s infinite ease-in-out;
     }
 
-    /* HTML Elements Styling inside foreignObject */
-    .left-content {
-      font-family: 'Fira Code', 'Segoe UI', system-ui, sans-serif;
-      height: 400px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      box-sizing: border-box;
+    /* Text Styles */
+    .font-base {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+    .font-mono {
+      font-family: 'Fira Code', 'Courier New', monospace;
     }
     .greeting {
-      font-size: 16px;
-      color: #bb9af3;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
+      font-size: 15px;
+      fill: #bb9af3;
+      font-weight: 700;
+      letter-spacing: 3px;
     }
     .full-name {
-      font-size: 46px;
+      font-size: 48px;
       font-weight: 800;
-      color: #ffffff;
-      margin: 0 0 12px 0;
+      fill: #ffffff;
       letter-spacing: -1px;
     }
-    .full-name span {
-      color: #7aa2f7;
-      background: linear-gradient(to right, #7aa2f7 30%, #7dcfff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .typing-text {
+      font-size: 19px;
+      fill: #a9b1d6;
+      font-weight: 500;
     }
-    .typing-container {
-      font-size: 20px;
-      color: #a9b1d6;
-      margin: 0 0 25px 0;
-      height: 28px;
-      display: flex;
-      align-items: center;
-    }
-    .typing-writer {
-      display: inline-block;
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 3px solid #7aa2f7;
-      animation: typing-effect 3.5s steps(40, end) infinite alternate, blink-caret 0.75s step-end infinite;
-      width: 0;
-    }
-    .tagline-group {
-      display: flex;
-      gap: 12px;
-    }
-    .custom-tag {
+    .tag-text {
       font-size: 12px;
       font-weight: 600;
-      color: #7dcfff;
-      background: rgba(125, 207, 255, 0.1);
-      border: 1px solid rgba(125, 207, 255, 0.2);
-      padding: 6px 14px;
-      border-radius: 20px;
-      letter-spacing: 0.5px;
+      fill: #7dcfff;
+    }
+
+    /* Typographic Animation Controls */
+    #clip-rect {
+      animation: type-reveal 4s steps(40) infinite alternate;
+    }
+    #cursor {
+      animation: cursor-blink 0.8s infinite, cursor-move 4s steps(40) infinite alternate;
     }
 
     /* SVG Graphical Elements Class Stylings */
@@ -153,21 +146,33 @@
   <circle class="star-sky" cx="920" cy="320" r="1" style="animation-duration: 2.8s;" />
   <circle class="star-sky" cx="1100" cy="190" r="1.5" style="animation-duration: 4.2s;" />
 
-  <!-- Left Panel Brand Content (with absolute dimensions for sandbox compatibility) -->
-  <foreignObject x="80" y="0" width="700" height="400">
-    <div xmlns="http://www.w3.org/1999/xhtml" class="left-content">
-      <div class="greeting">Hello World, I'm</div>
-      <h1 class="full-name">Huỳnh Văn <span>Dũng</span></h1>
-      <div class="typing-container">
-        <span class="typing-writer">Future Network Engineer &amp; Researcher</span>
-      </div>
-      <div class="tagline-group">
-        <span class="custom-tag">📡 SDN &amp; SD-WAN</span>
-        <span class="custom-tag">🔒 Cryptography &amp; P2P</span>
-        <span class="custom-tag">🏐 Volleyball Athlete</span>
-      </div>
-    </div>
-  </foreignObject>
+  <!-- Left Panel Brand Content (100% Native SVG Elements - No foreignObject) -->
+  <g transform="translate(0, 0)">
+    <!-- Subtitle/Greeting -->
+    <text class="font-base greeting" x="80" y="115">HELLO WORLD, I'M</text>
+
+    <!-- Full Name -->
+    <text class="font-base full-name" x="80" y="170">Huỳnh Văn <tspan fill="url(#text-gradient)">Dũng</tspan></text>
+
+    <!-- Typing Text with ClipPath Mask -->
+    <text class="font-mono typing-text" x="80" y="215" clip-path="url(#type-clip)">Future Network Engineer &amp; Researcher</text>
+    
+    <!-- Typing Cursor -->
+    <rect id="cursor" x="80" y="198" width="3" height="22" fill="#7aa2f7" />
+
+    <!-- Badges Row -->
+    <!-- Tag 1: SDN & SD-WAN -->
+    <rect x="80" y="260" width="160" height="32" rx="16" fill="#7dcfff" fill-opacity="0.1" stroke="#7dcfff" stroke-opacity="0.2" stroke-width="1" />
+    <text class="font-base tag-text" x="160" y="280" text-anchor="middle">📡 SDN &amp; SD-WAN</text>
+
+    <!-- Tag 2: Cryptography & P2P -->
+    <rect x="252" y="260" width="195" height="32" rx="16" fill="#7dcfff" fill-opacity="0.1" stroke="#7dcfff" stroke-opacity="0.2" stroke-width="1" />
+    <text class="font-base tag-text" x="349.5" y="280" text-anchor="middle">🔒 Cryptography &amp; P2P</text>
+
+    <!-- Tag 3: Volleyball Athlete -->
+    <rect x="459" y="260" width="185" height="32" rx="16" fill="#7dcfff" fill-opacity="0.1" stroke="#7dcfff" stroke-opacity="0.2" stroke-width="1" />
+    <text class="font-base tag-text" x="551.5" y="280" text-anchor="middle">🏐 Volleyball Athlete</text>
+  </g>
 
   <!-- Right Panel: Natively rendered Spine-Leaf Topology -->
   <g transform="translate(820, 50)">

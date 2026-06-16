@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="profile.svg?v=3" alt="Huỳnh Văn Dũng's GitHub Profile Banner" width="100%" />
+  <img src="profile.svg?v=4" alt="Huỳnh Văn Dũng's GitHub Profile Banner" width="100%" />
 </p>
 
 A passionate undergraduate student specializing in **Computer Networks & Data Communication** at **Ton Duc Thang University (TDTU)**. Focused on designing resilient infrastructures, security mechanisms, and leveraging AI to automate routing protocols.
