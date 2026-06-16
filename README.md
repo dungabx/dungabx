@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="profile.svg" alt="Huỳnh Văn Dũng's GitHub Profile Banner" width="100%" />
+  <img src="profile.svg?v=2" alt="Huỳnh Văn Dũng's GitHub Profile Banner" width="100%" />
 </p>
 
 A passionate undergraduate student specializing in **Computer Networks & Data Communication** at **Ton Duc Thang University (TDTU)**. Focused on designing resilient infrastructures, security mechanisms, and leveraging AI to automate routing protocols.
@@ -59,13 +59,13 @@ A passionate undergraduate student specializing in **Computer Networks & Data Co
 ### 🤝 Connect with Me
 
 <p align="left">
-  <a href="https://linkedin.com/in/dungabx" target="_blank">
+  <a href="https://linkedin.com/in/YOUR_LINKEDIN_USERNAME" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
   &nbsp;
-  <a href="mailto:dungabx.network@gmail.com">
+  <a href="mailto:YOUR_EMAIL@gmail.com">
     <img src="https://img.shields.io/badge/Gmail-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Gmail" />
   </a>
 </p>
 
-
+*Note: Replace `YOUR_LINKEDIN_USERNAME` and `YOUR_EMAIL@gmail.com` with your actual social links.*
